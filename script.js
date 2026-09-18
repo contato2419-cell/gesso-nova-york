@@ -26,11 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-            header.style.padding = '10px 0';
+            header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.8)';
         } else {
-            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
-            header.style.padding = '15px 0';
+            header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
         }
     });
 
