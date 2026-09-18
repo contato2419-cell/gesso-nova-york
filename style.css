@@ -1,0 +1,403 @@
+/* ==========================================================================
+   CSS Variables & Reset
+   ========================================================================== */
+:root {
+    --primary-color: #d32f2f; 
+    --gold-color: #b89554; /* Gold accent to match ref */
+    --gold-hover: #9c7b3d;
+    --dark-bg: #1e2632; /* Elegant dark blue/grey */
+    --header-bg: #000000; /* Black to blend with logo */
+    --light-bg: #f8f9fa;
+    --text-main: #333333;
+    --text-light: #e0e0e0;
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --transition: all 0.3s ease;
+    --border-radius: 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    background-color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 500; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.text-center { text-align: center; }
+.bg-light { background-color: var(--light-bg); }
+.bg-dark { background-color: var(--dark-bg); color: #fff; }
+.light-text { color: #fff; }
+.mt-20 { margin-top: 20px; }
+.rounded { border-radius: var(--border-radius); }
+.shadow-lg { box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+.img-fluid { max-width: 100%; height: auto; display: block; }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+}
+
+.btn-white { background-color: #fff; color: var(--dark-bg); }
+.btn-white:hover { background-color: #eee; }
+
+.btn-outline { background-color: transparent; border-color: rgba(255,255,255,0.5); color: #fff; }
+.btn-outline:hover { border-color: #fff; background-color: rgba(255,255,255,0.1); }
+
+.btn-gold-header {
+    background-color: var(--gold-color);
+    color: #111;
+    padding: 12px 24px;
+    border-radius: 50px; /* Pill shape for header button */
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+.btn-gold-header:hover { background-color: var(--gold-hover); transform: scale(1.02); }
+
+.btn-dark { background-color: var(--dark-bg); color: #fff; }
+.btn-dark:hover { background-color: #000; }
+
+/* ==========================================================================
+   Header (Floating Pill)
+   ========================================================================== */
+.header-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* Allows clicking behind it where there's no header */
+}
+
+.header {
+    background-color: var(--header-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50px; /* Pill shape */
+    padding: 8px 30px; 
+    width: 95%;
+    max-width: 1050px; /* Bring button closer */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    pointer-events: auto; /* Re-enable clicks */
+    backdrop-filter: blur(10px);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img { height: 35px; object-fit: contain; display: block; }
+
+.nav-list { display: flex; gap: 25px; margin: 0 20px; }
+.nav-list a {
+    font-size: 0.8rem;
+    color: #bbb;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+.nav-list a:hover { color: #fff; }
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('assets/foto2.png') center/cover no-repeat;
+    z-index: 0;
+    animation: zoomOut 20s linear infinite alternate;
+}
+
+@keyframes zoomOut {
+    0% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(20,25,32,0.85) 0%, rgba(20,25,32,0.7) 100%);
+    z-index: 1;
+}
+
+.hero-lines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 100px 100px;
+    background-position: center center;
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    letter-spacing: 5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-divider {
+    width: 150px;
+    height: 1px;
+    background-color: rgba(255,255,255,0.3);
+    margin: 20px auto;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 30px;
+}
+
+.hero-rating {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.hero-rating .stars { color: #fff; font-size: 1rem; letter-spacing: 2px;}
+.hero-rating .rating-text { font-size: 0.75rem; letter-spacing: 2px; color: rgba(255,255,255,0.7); }
+
+.hero-actions { display: flex; gap: 20px; }
+
+.scroll-down {
+    position: absolute;
+    bottom: 80px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.5);
+}
+
+/* ==========================================================================
+   Marquee (Faixa Infinita)
+   ========================================================================== */
+.marquee-container {
+    background-color: #1a212c;
+    color: #8b95a5;
+    padding: 15px 0;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-content span {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-right: 30px;
+    font-weight: 500;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   General Sections
+   ========================================================================== */
+.section { padding: 100px 0; }
+.section-header { margin-bottom: 60px; }
+.section-header h2 { font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 2px; }
+.section-divider { width: 60px; height: 2px; background-color: var(--gold-color); margin: 20px auto; }
+.section-divider.left { margin: 20px 0; }
+
+/* ==========================================================================
+   Serviços Cards
+   ========================================================================== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: #fff;
+    padding: 40px 30px;
+    border: 1px solid #eaeaea;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: var(--gold-color);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--dark-bg);
+}
+
+.service-card p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.service-link {
+    display: inline-block;
+    color: var(--gold-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+.service-link:hover {
+    color: var(--dark-bg);
+}
+
+/* ==========================================================================
+   Projetos / Galeria
+   ========================================================================== */
+.grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.gallery-item {
+    overflow: hidden;
+    aspect-ratio: 1;
+    position: relative;
+}
+.gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s ease;
+}
+.gallery-item:hover img { transform: scale(1.1); }
+
+/* ==========================================================================
+   Sobre Section
+   ========================================================================== */
+.sobre-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+.sobre-text h2 { font-family: var(--font-heading); font-size: 2.5rem; }
+.sobre-text p { margin-bottom: 20px; font-size: 1.05rem; color: #555; }
+
+/* ==========================================================================
+   Avaliações
+   ========================================================================== */
+.google-rating .rating-number { font-size: 4rem; font-family: var(--font-heading); margin-bottom: 10px;}
+.gold-stars { color: #f4b400; font-size: 1.2rem; letter-spacing: 2px;}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+.review-card {
+    background: #fff; padding: 30px;
+    border: 1px solid #eaeaea;
+}
+.review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.review-card p { color: #666; font-style: italic; font-size: 0.95rem; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer { background-color: var(--header-bg); color: #fff; padding: 80px 0 20px; }
+.footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 60px; }
+.footer h3, .footer h4 { font-family: var(--font-heading); letter-spacing: 2px; margin-bottom: 20px; color: #fff; }
+.footer p, .footer ul { color: #999; margin-bottom: 10px; font-size: 0.9rem; }
+.footer a { color: var(--gold-color); }
+.footer a:hover { color: #fff; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; color: #666; font-size: 0.8rem; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 992px) {
+    .sobre-container { grid-template-columns: 1fr; }
+    .hero-title { font-size: 3.5rem; }
+}
+@media (max-width: 850px) {
+    .nav { display: none; }
+}
+@media (max-width: 768px) {
+    .header { padding: 10px 15px; }
+    .btn-gold-header { padding: 10px 15px; font-size: 0.7rem; }
+    .hero-actions { flex-direction: column; }
+    .hero-title { font-size: 2.8rem; }
+    .section { padding: 60px 0; }
+    .marquee-content span { font-size: 0.65rem; }
+}
