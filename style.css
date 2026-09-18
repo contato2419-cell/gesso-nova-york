@@ -106,9 +106,9 @@ ul { list-style: none; }
     padding: 8px 30px; 
     width: 95%;
     max-width: 1050px; /* Bring button closer */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Stronger shadow */
     pointer-events: auto; /* Re-enable clicks */
-    backdrop-filter: blur(10px);
+    /* Removed backdrop-filter to prevent scrolling bugs */
 }
 
 .header-container {
@@ -117,7 +117,7 @@ ul { list-style: none; }
     align-items: center;
 }
 
-.logo img { height: 35px; object-fit: contain; display: block; }
+.logo img { height: 45px; object-fit: contain; display: block; mix-blend-mode: lighten; }
 
 .nav-list { display: flex; gap: 25px; margin: 0 20px; }
 .nav-list a {
@@ -238,12 +238,14 @@ ul { list-style: none; }
     position: relative;
     border-top: 1px solid rgba(255,255,255,0.05);
     border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    white-space: nowrap;
 }
 
 .marquee-content {
-    display: inline-block;
-    white-space: nowrap;
-    animation: marquee 30s linear infinite;
+    display: flex;
+    animation: marquee 35s linear infinite;
+    min-width: 200%; /* Ensures it covers ultra-wide screens */
 }
 
 .marquee-content span {
@@ -255,7 +257,7 @@ ul { list-style: none; }
 
 @keyframes marquee {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-33.33%); } /* Since we have 3 sets, move by 1/3 */
 }
 
 /* ==========================================================================
