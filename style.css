@@ -117,7 +117,7 @@ ul { list-style: none; }
     align-items: center;
 }
 
-.logo img { height: 45px; object-fit: contain; display: block; mix-blend-mode: screen; }
+.logo img { height: 45px; object-fit: contain; display: block; }
 
 .nav-list { display: flex; gap: 25px; margin: 0 20px; }
 .nav-list a {
